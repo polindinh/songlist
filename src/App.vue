@@ -1,28 +1,51 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div>
+        <Header title="Vue Playlist"></Header>
+        <ul>
+          <li v-for="song in songs" v-bind:key ="song" :index="song.name">{{ song.name }} - {{ song.singer }}<button @click="addSong">Add to Playlist</button>
+          </li>
+        </ul>
+        <Footer v-bind:title="title"></Footer>
+        <p>{{playlist}}</p>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+// Imports
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
+// import Songs from './components/Songs.vue';
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+    components: {
+      Header,
+      Footer,
+    },
+    data:function() {
+      return {
+        songs: [
+            {name: 'See You Again', singer: 'Charlie Puth', show: false},
+            {name: 'Apologize', singer: 'OneRepbulic', show: false},
+            {name: 'Fix You', singer: 'Coldplay', show: false},
+            {name: 'Intentions', singer: 'Justin Bieber', show: false},
+            {name: 'My heart will go on', singer: 'Celine Dion', show: false},
+            {name: 'Pressure', singer: 'Queen', show: false}
+        ],
+        playlist: [],
+      }
+    },
+    methods:{
+      addSong: function(index){
+        this.playlist.push(this.songs[index])
+
+      }
+    },
+   
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body{
+    margin: 0;
+    font-family: 'Nunito SemiBold';
 }
 </style>
