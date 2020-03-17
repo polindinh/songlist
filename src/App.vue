@@ -88,10 +88,11 @@ ul{
 }
 li{
     flex-grow: 1;
-    flex-basis: 300px;
+    flex-basis: 200px;
     text-align: center;
-    padding: 30px;
-    border: 1px solid #222;
+    padding: 10px;
+    /* border: 1px solid #222; */
+    box-shadow: 1px 1px 3px 3px grey;
     margin: 10px;
 }
 h1{

@@ -38,5 +38,10 @@ export default {
 }
 </script>
 <style scoped>
-
+     button{
+        background-color: #D20913;
+        padding:5px 10px;
+        color: white;
+        border-radius: 10px;
+    }
 </style>

@@ -35,5 +35,12 @@ export default {
 }
 </script>
 <style scoped>
+    button{
+        background-color: #1DA1F2;
+        padding:5px 10px;
+        color: white;
+        border-radius: 10px;
+
+    }
 
 </style>
