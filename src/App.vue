@@ -2,8 +2,8 @@
     <div>
         <Header title="Vue Playlist"></Header>
         <Songs @update="addSong" v-bind:songs="songs"/>
-        <Playlist v-bind:playlists="playlists"/>
-        <Footer @remove="removeSong" title="Vue Playlist"></Footer>
+        <Playlist @remove="removeSong" v-bind:playlists="playlists"/>
+        <Footer title="Vue Playlist"></Footer>
     </div>
 </template>
 
@@ -38,8 +38,8 @@ export default {
         console.log(data)
         this.playlists.push(data)
       },
-      removeSong: function(){
-        this.playlists.splice()
+      removeSong: function(index){
+        this.playlists.splice(index,1)
       },
    }
    

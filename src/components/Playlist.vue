@@ -28,7 +28,7 @@ export default {
     },
     methods:{
         deleteSong: function(){
-            this.$emit('remove');
+            this.$emit('remove', this.playlists);
         }
     }
 };
