@@ -1,12 +1,9 @@
 <template>
     <div>
         <Header title="Vue Playlist"></Header>
-        <ul>
-          <li v-for="song in songs" v-bind:key ="song" :index="song.name">{{ song.name }} - {{ song.singer }}<button @click="addSong">Add to Playlist</button>
-          </li>
-        </ul>
-        <Footer v-bind:title="title"></Footer>
-        <p>{{playlist}}</p>
+        <Songs @update="addSong" v-bind:songs="songs"/>
+        <Playlist v-bind:playlists="playlists"/>
+        <Footer @remove="removeSong" title="Vue Playlist"></Footer>
     </div>
 </template>
 
@@ -14,31 +11,38 @@
 // Imports
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
-// import Songs from './components/Songs.vue';
+import Songs from './components/Songs.vue';
+import Playlist from './components/Playlist.vue';
 export default {
     components: {
       Header,
       Footer,
+      Songs,
+      Playlist,
     },
     data:function() {
       return {
         songs: [
-            {name: 'See You Again', singer: 'Charlie Puth', show: false},
-            {name: 'Apologize', singer: 'OneRepbulic', show: false},
-            {name: 'Fix You', singer: 'Coldplay', show: false},
-            {name: 'Intentions', singer: 'Justin Bieber', show: false},
-            {name: 'My heart will go on', singer: 'Celine Dion', show: false},
-            {name: 'Pressure', singer: 'Queen', show: false}
+            {id: 1, name: 'See You Again', singer: 'Charlie Puth'},
+            {id: 2, name: 'Apologize', singer: 'OneRepbulic'},
+            {id: 3, name: 'Fix You', singer: 'Coldplay'},
+            {id: 4, name: 'Intentions', singer: 'Justin Bieber'},
+            {id: 5, name: 'My heart will go on', singer: 'Celine Dion'},
+            {id: 6, name: 'Pressure', singer: 'Queen'}
         ],
-        playlist: [],
+        playlists: [],
       }
     },
-    methods:{
-      addSong: function(index){
-        this.playlist.push(this.songs[index])
-
-      }
-    },
+    methods: {
+      addSong: function(data) {
+        console.log(data)
+        this.playlists.push(data)
+      },
+      removeSong: function(){
+        this.playlists.splice()
+      },
+   }
+   
    
 };
 </script>

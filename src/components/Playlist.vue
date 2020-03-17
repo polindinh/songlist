@@ -1,35 +1,37 @@
 <template>
     <div id="songs">
-        <h1>All Songs</h1>
+        <h1>Your Playlist</h1>
         <ul>
-            <li v-for="song in songs" :key="song.id">
-
+            <li v-for="song in playlists" :key="song.id">
                 <h2>{{ song.name }}</h2>
                 <p>{{ song.singer }}</p>
-                <p>{{ song.id }}</p>
-
-                <button @click="update">Add to Playlist</button>
+                <button @click="deleteSong">Remove</button>
             </li>
         </ul>
     </div>
 </template>
+
+
 <script>
 export default {
-    name:'Songs',
-    props: {
-      songs: {
-        id: '',
-        name:'',
-        singer:'',
-      }
+    name:'Playlist',
+    props:{
+     playlists: {
+        type: Array,
+      },
     },
-    methods: {
-      update: function(){
-        this.$emit('update',this.songs);
-      }
+    data(){
+        return{
+        }
+    },
+    methods:{
+        deleteSong: function(){
+            this.$emit('remove');
+        }
     }
-}
+};
 </script>
+
 <style scoped>
 #songs{
     width: 100%;
