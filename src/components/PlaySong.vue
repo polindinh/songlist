@@ -1,17 +1,20 @@
+
 <template>
-        <ul id="songs">
+    <div id="songs">
+        <ul>
             <li>
                 <h2>{{ name }}</h2>
                 <p>{{ singer }}</p>
                 <p>{{ id }}</p>
-                <button @click="update">Add to Playlist</button>
+                <button @click="remove"> Delete</button>
             </li>
         </ul>
+    </div>
 </template>
 <script>
 
 export default {
-    name:'Song',
+    name:'PlaySong',
     props: {
       id:{
           type:Number,
@@ -28,8 +31,8 @@ export default {
     },
     
     methods: {
-      update: function(){
-        this.$emit('addSong',{id: this.id, name:this.name, singer:this.singer});
+      remove: function(){
+        this.$emit('removeSong',{id: this.id, name:this.name, singer:this.singer});
       }
     }
 }
