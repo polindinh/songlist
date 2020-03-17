@@ -2,9 +2,9 @@
     <div id="songs">
         <h1>Your Playlist</h1>
         <ul>
-            <li v-for="song in playlists" :key="song.id">
-                <h2>{{ song.name }}</h2>
-                <p>{{ song.singer }}</p>
+            <li v-for="(song,index) in playlists" :index="index" :key="song.id ">
+                <h2>{{ song[index].name }}</h2>
+                <p>{{ song[index].singer }}</p>
                 <button @click="deleteSong">Remove</button>
             </li>
         </ul>
@@ -17,7 +17,9 @@ export default {
     name:'Playlist',
     props:{
      playlists: {
-        type: Array,
+        id: Number,
+        name: String,
+        singer: String,
       },
     },
     data(){

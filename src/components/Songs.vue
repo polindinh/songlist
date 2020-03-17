@@ -7,7 +7,6 @@
                 <h2>{{ song.name }}</h2>
                 <p>{{ song.singer }}</p>
                 <p>{{ song.id }}</p>
-
                 <button @click="update">Add to Playlist</button>
             </li>
         </ul>
@@ -18,11 +17,12 @@ export default {
     name:'Songs',
     props: {
       songs: {
-        id: '',
-        name:'',
-        singer:'',
+        id: Number,
+        name:String,
+        singer:String,
       }
     },
+    
     methods: {
       update: function(){
         this.$emit('update',this.songs);
